@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { useAsyncResource, AsyncResourceContent } from 'use-async-resource';
+// Components
+import { SelectQuiz, StartQuiz, QuestionCard, Results, Loading, Error } from './components/components';
+// Context
+import { GlobalProvider } from './context/context';
+// Api function
+import { fetchQuestions, dataModifier } from './API/API';
+// Styles
+import { GlobalStyle, Title } from './App.styles';
 
-function App() {
+const App = () => {
+  const [ quizReader, fetchNewQuiz ] = useAsyncResource(fetchQuestions)
+  const [ appState, setAppState ] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalProvider>
+      <GlobalStyle />
+      <Title>It's Quiz Time</Title>
+      <AsyncResourceContent  
+        fallback={<Loading />}
+        errorMessage={<Error />}
+      >
+        {appState === 0 && <SelectQuiz fetchNewQuiz={fetchNewQuiz} setAppState={setAppState} />}
+        {appState === 1 && <StartQuiz quizReader={quizReader} dataModifier={dataModifier} setAppState={setAppState} />}
+        {appState === 2 && <QuestionCard setAppState={setAppState} />}
+        {appState === 3 && <Results setAppState={setAppState} />}
+      </AsyncResourceContent >
+    </GlobalProvider>
   );
 }
 
