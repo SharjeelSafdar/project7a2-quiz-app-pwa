@@ -12,10 +12,7 @@ const Error: React.FC<Props> = ({ setAppState }) => {
                 style={{
                     color: 'white',
                     textAlign: 'center',
-                    padding: '20px',
-                    width: '500px',
                     margin: '20px auto',
-                    maxWidth: '90vw',
                 }}
             >
                 It seems that you are offline :( Please, check your internet connection and try again.
