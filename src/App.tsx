@@ -12,7 +12,7 @@ import { GlobalStyle, Title, Box } from './styles/styles';
 const App = () => {
   const [ quizReader, fetchNewQuiz ] = useAsyncResource(fetchQuestions)
   const [ appState, setAppState ] = useState(0);
-console.log(appState)
+  
   return (
     <GlobalProvider>
       <GlobalStyle />

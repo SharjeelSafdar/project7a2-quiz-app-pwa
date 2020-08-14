@@ -4,11 +4,10 @@ export const fetchQuestions: FetchQuestions = async (category, quizType, difficu
     try {
         const endpoint = `https://opentdb.com/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=${quizType}`;
         const response = await (await fetch(endpoint)).json();
-        console.log(response);
         return response;
     }
     catch (error) {
-        console.log(error);
+        console.log(`Error: ${error}`);
     }
 }
 
