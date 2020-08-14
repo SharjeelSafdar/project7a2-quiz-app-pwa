@@ -21,10 +21,6 @@ export const reducerFunc = (state: State, action: Action): State => {
                 quizData: {
                     ...state.quizData,
                     userAnswers: [ ...state.quizData.userAnswers, action.payload ],
-                    isAnswerCorrect: [ 
-                        ...state.quizData.isAnswerCorrect, 
-                        action.payload === state.quizData.correctAnswers[state.quizData.currentQuestion]
-                    ],
                     score: action.payload === state.quizData.correctAnswers[state.quizData.currentQuestion]
                         ? state.quizData.score + 1
                         : state.quizData.score,

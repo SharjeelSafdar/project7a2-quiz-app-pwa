@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-import bgImage1 from './images/bg_image_1.jpg';
+import bgImage1 from '../images/bg_image_1.jpg';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     html {
         height: 100%;
     }
@@ -23,3 +23,5 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Catamaran', sans-serif;
     }
 `;
+
+export default GlobalStyle;

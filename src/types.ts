@@ -27,21 +27,14 @@ export type FormData = {
     numQuestions: number;
 }
 
-type SetAppState = {
-    readonly id: 'SET_APP_STATE';
-    readonly payload: number;
-}
-
 type SubmitForm = {
     readonly id: 'SUBMIT_FORM';
     readonly payload: FormData;
 }
-
 type StartQuiz = {
     readonly id: 'START_QUIZ';
     readonly payload: QuizData;
 }
-
 type SubmitAnswer = {
     readonly id: 'SUBMIT_ANSWER';
     readonly payload: string;
@@ -52,7 +45,7 @@ type NextQuestion = {
     readonly payload: null;
 }
 
-export type Action = SetAppState | SubmitForm | SubmitAnswer | StartQuiz | NextQuestion;
+export type Action = SubmitForm | SubmitAnswer | StartQuiz | NextQuestion;
 
 export type RawQuestion = {
     category: string;
@@ -63,13 +56,18 @@ export type RawQuestion = {
     incorrect_answers: string[];
 }
 
+export type Response = {
+    response_code: number;
+    results: RawQuestion[]
+}
+
 export type FetchQuestions = {
     (
         category: number,
         quizType: string,
         difficulty: string,
         numQuestions: number,
-    ): Promise<RawQuestion[]>
+    ): Promise<Response>
 }
 
 export type Question = {
@@ -81,13 +79,13 @@ export type Question = {
 }
 
 export type QuizData = {
+    responseCode: number;
     totalQuestions: number;
     score: number;
     questions: Question[];
     correctAnswers: string[];
     currentQuestion: number;
     userAnswers: string[];
-    isAnswerCorrect: boolean[];
 }
 
-export type DataModifier = (rawData: RawQuestion[]) => QuizData;
+export type DataModifier = (rawData: Response) => QuizData;

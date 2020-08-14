@@ -6,16 +6,16 @@ import { GlobalContext } from '../../context/context';
 import { fetchQuestions } from '../../API/API';
 // Styles
 import { StyledWrapper } from './SelectQuiz.styles';
-import { Button } from '../ButtonWrapper';
+import { Button } from '../../styles/styles';
 // Types
 import { FormData } from '../../types';
 
-type SelectQuizProps = {
+type Props = {
     fetchNewQuiz: any;
     setAppState: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SelectQuiz: React.FC<SelectQuizProps> = ({ fetchNewQuiz, setAppState }) => {
+const SelectQuiz: React.FC<Props> = ({ fetchNewQuiz, setAppState }) => {
     const { categories, quizType, quizDifficulty, numQuestionsAvailable, submitForm } = useContext(GlobalContext);
     const [ categorySelection, setCategorySelection ] = useState<number>(0);
     const [ typeSelection, setTypeSelection ] = useState<string>('');

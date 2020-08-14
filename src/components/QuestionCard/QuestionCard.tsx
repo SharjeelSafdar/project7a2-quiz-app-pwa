@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 // Context
 import { GlobalContext } from '../../context/context';
 // Styles
-import { Wrapper, ButtonWrapper } from './QuestionCard.styles';
-import { Button } from '../ButtonWrapper';
+import { Wrapper } from './QuestionCard.styles';
+import { Button, OptionButton } from '../../styles/styles';
 
 type Props = {
     setAppState: React.Dispatch<React.SetStateAction<number>>;
@@ -51,15 +51,15 @@ const QuestionCard: React.FC<Props> = ({ setAppState }) => {
             </div>
             <div className="qStatement">{questions[currentQuestion].questionStatement}</div>
             {questions[currentQuestion].options.map( (option: string) => (
-                <ButtonWrapper
+                <OptionButton
                     key={option}
-                    correct={(userAnswers[currentQuestion] &&  correctAnswers[currentQuestion]) === option}
+                    correct={(userAnswers[currentQuestion] && correctAnswers[currentQuestion]) === option}
                     userClicked={(userAnswers[currentQuestion] && userAnswers[currentQuestion]) === option}
                 >
                     <button disabled={!!userAnswers[currentQuestion]} value={option} onClick={clickHandler}>
                         <span dangerouslySetInnerHTML={{ __html: option }} />
                     </button>
-                </ButtonWrapper>
+                </OptionButton>
             ))}
             <Button onClick={nextHandler} disabled={!userAnswers[currentQuestion]}>
                 {currentQuestion === totalQuestions - 1 ? 'Finish Quiz' : 'Next Question'}

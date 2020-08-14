@@ -53,14 +53,14 @@ const initialState: State = {
     slectedDifficulty: '',
     selectedNumOfQuestions: 5,
     quizData: {
+        responseCode: 0,
         totalQuestions: 5,
         score: 0,
         questions: Array<Question>(1),
         correctAnswers: Array<string>(1),
         currentQuestion: 0,
         userAnswers: Array<string>(1),
-        isAnswerCorrect: Array<boolean>(1),
-    }
+    },
 }
 
 export const GlobalContext = createContext<State>(initialState);

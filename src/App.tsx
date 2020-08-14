@@ -7,24 +7,30 @@ import { GlobalProvider } from './context/context';
 // Api function
 import { fetchQuestions, dataModifier } from './API/API';
 // Styles
-import { GlobalStyle, Title } from './App.styles';
+import { GlobalStyle, Title, Box } from './styles/styles';
 
 const App = () => {
   const [ quizReader, fetchNewQuiz ] = useAsyncResource(fetchQuestions)
   const [ appState, setAppState ] = useState(0);
-
+console.log(appState)
   return (
     <GlobalProvider>
       <GlobalStyle />
       <Title>It's Quiz Time</Title>
       <AsyncResourceContent  
         fallback={<Loading />}
-        errorMessage={<Error />}
+        errorMessage={<Error setAppState={setAppState}/>}
       >
-        {appState === 0 && <SelectQuiz fetchNewQuiz={fetchNewQuiz} setAppState={setAppState} />}
-        {appState === 1 && <StartQuiz quizReader={quizReader} dataModifier={dataModifier} setAppState={setAppState} />}
-        {appState === 2 && <QuestionCard setAppState={setAppState} />}
-        {appState === 3 && <Results setAppState={setAppState} />}
+        <Box>
+        {(appState === 0 || appState === 4) && 
+          <SelectQuiz fetchNewQuiz={fetchNewQuiz} setAppState={setAppState} />}
+        {appState === 1 && 
+          <StartQuiz quizReader={quizReader} dataModifier={dataModifier} setAppState={setAppState} />}
+        {appState === 2 && 
+          <QuestionCard setAppState={setAppState} />}
+        {appState === 3 && 
+          <Results setAppState={setAppState} />}
+        </Box>
       </AsyncResourceContent >
     </GlobalProvider>
   );

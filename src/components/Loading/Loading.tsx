@@ -1,7 +1,7 @@
 import React from 'react';
 import loadingImage from '../../images/loader.gif'
 
-const Loading = () => {
+const Loading: React.FC = () => {
     return (
         <img 
             src={loadingImage} 

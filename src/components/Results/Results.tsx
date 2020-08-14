@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 // Context
 import { GlobalContext } from '../../context/context';
 // Styles
-import { Wrapper, ButtonWrapper } from './Results.styles';
-import { Button } from '../ButtonWrapper';
+import { Wrapper } from './Results.styles';
+import { Button, OptionButton } from '../../styles/styles';
 // Types
 import { Question } from '../../types';
 type Props = {
@@ -27,7 +27,7 @@ const Results: React.FC<Props> = ({ setAppState }) => {
                     <div className="qNum">{`Question # ${i + 1}/${totalQuestions}`}</div>
                     <div className="qStatement">{question.questionStatement}</div>
                     {question.options.map( (option: string) => (
-                        <ButtonWrapper
+                        <OptionButton
                             key={option}
                             correct={correctAnswers[i] === option}
                             userClicked={userAnswers[i] === option}
@@ -35,7 +35,7 @@ const Results: React.FC<Props> = ({ setAppState }) => {
                             <button disabled value={option}>
                                 <span dangerouslySetInnerHTML={{ __html: option }} />
                             </button>
-                        </ButtonWrapper>
+                        </OptionButton>
                     ))}
                 </div>
             ))}

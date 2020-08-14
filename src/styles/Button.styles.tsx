@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+const Button = styled.button`
     display: block;
     cursor: pointer;
     user-select: none;
@@ -16,3 +16,5 @@ export const Button = styled.button`
         opacity: 0.8;
     }
 `;
+
+export default Button;

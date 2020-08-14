@@ -1,9 +1,14 @@
 import React from 'react';
+import { Box, Button } from '../../styles/styles';
 
-const Error = () => {
+interface Props {
+    setAppState: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Error: React.FC<Props> = ({ setAppState }) => {
     return (
-        <>
-            <h1
+        <Box>
+            <h3
                 style={{
                     color: 'white',
                     textAlign: 'center',
@@ -13,9 +18,18 @@ const Error = () => {
                     maxWidth: '90vw',
                 }}
             >
-                Something went wrong. Please, refresh the page and try again with different options.
-            </h1>
-        </>
+                It seems that you are offline :( Please, check your internet connection and try again.
+            </h3>
+            <Button onClick={() => setAppState( previous => {
+                // Toggle appState value between 0 and 4.
+                if (previous === 0)
+                    return 4;
+                else
+                    return 0;
+            })}>
+                Back to Home Page
+            </Button>
+        </Box>
     )
 }
 
