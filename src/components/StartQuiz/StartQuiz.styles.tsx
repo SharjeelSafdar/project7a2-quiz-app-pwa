@@ -9,5 +9,6 @@ export const Wrapper = styled.div`
 
     div:first-of-type {
         justify-content: center;
+        text-align: center;
     }
 `;
