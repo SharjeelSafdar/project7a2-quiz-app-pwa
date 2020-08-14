@@ -8,15 +8,17 @@ interface Props {
 const Error: React.FC<Props> = ({ setAppState }) => {
     return (
         <Box>
-            <h3
+            <p
                 style={{
                     color: 'white',
                     textAlign: 'center',
                     margin: '20px auto',
+                    fontWeight: 700,
+                    fontSize: '17px'
                 }}
             >
                 It seems that you are offline :( Please, check your internet connection and try again.
-            </h3>
+            </p>
             <Button onClick={() => setAppState( previous => {
                 // Toggle appState value between 0 and 4.
                 if (previous === 0)
