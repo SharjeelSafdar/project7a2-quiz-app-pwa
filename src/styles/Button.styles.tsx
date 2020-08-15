@@ -10,7 +10,7 @@ const Button = styled.button`
     border-radius: 10px;
     height: 40px;
     margin: 25px auto 10px;
-    padding: 0 40px;
+    padding: 0 30px;
     transition: opacity 0.3s ease;
     :hover {
         opacity: 0.8;

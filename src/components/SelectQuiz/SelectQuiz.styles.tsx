@@ -17,4 +17,8 @@ export const StyledWrapper = styled.div`
     option {
         color: black;
     }
+    .buttons {
+        display: flex;
+        flex-direction: row;
+    }
 `;

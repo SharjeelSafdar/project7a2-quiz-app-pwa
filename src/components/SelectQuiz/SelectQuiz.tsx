@@ -9,6 +9,11 @@ import { StyledWrapper } from './SelectQuiz.styles';
 import { Button } from '../../styles/styles';
 // Types
 import { FormData } from '../../types';
+// Firebase notifications
+import { requestFcmPermission } from '../../firebase';
+// Icons
+import { IconContext } from 'react-icons';
+import { FaBell } from 'react-icons/fa';
 
 type Props = {
     fetchNewQuiz: any;
@@ -33,6 +38,10 @@ const SelectQuiz: React.FC<Props> = ({ fetchNewQuiz, setAppState }) => {
         resourceCache(fetchQuestions).clear();
         fetchNewQuiz(categorySelection, typeSelection, difficultySelection, numQuestionsSelection);
         setAppState(1); // Show StartQuiz component on next render.
+    }
+    const allowNotifications = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        requestFcmPermission();
     }
     return (
         <StyledWrapper>
@@ -65,9 +74,16 @@ const SelectQuiz: React.FC<Props> = ({ fetchNewQuiz, setAppState }) => {
                     ))}
                 </select>
 
-                <Button type='submit' onClick={clickHandler}>
-                    Start Quiz
-                </Button>
+                <div className="buttons">
+                    <Button type='submit' onClick={clickHandler}>
+                        Start Quiz
+                    </Button>
+                    <Button onClick={allowNotifications}>
+                        <IconContext.Provider value={{ size: "18px", color: "black" }}>
+                            <FaBell title="Allow Notifiactions"/>
+                        </IconContext.Provider>
+                    </Button>
+                </div>
             </form>
         </StyledWrapper>
     )
