@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '../../styles/styles';
 
-const Error: React.FC<Props> = () => {
+const Error: React.FC = () => {
     return (
         <Box>
             <p
