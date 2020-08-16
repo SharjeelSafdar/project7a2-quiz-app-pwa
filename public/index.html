@@ -36,13 +36,13 @@
     <div id="root"></div>
 
     <script>
-      window.addEventListner('load', () => {
-        if ('serviceWorker' in navigator) {
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
           navigator.serviceWorker.register('./sw.js')
-            .then( reg => console.log(`Service worker registered in the scope: ${reg.scope}`) )
-            .catch( err => console.log(`Error registering service worker: ${err}`))
-        }
-      })
+            .then( reg => console.log('Success: ', reg.scope) )
+            .catch( err => console.log('Failure: ', err))
+        })
+      }
     </script>
   </body>
 </html>
