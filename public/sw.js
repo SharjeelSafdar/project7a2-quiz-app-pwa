@@ -26,7 +26,6 @@ this.addEventListener('activate', (e) => {
 
 // Call fetch event- Caching Policy: Offline
 this.addEventListener('fetch', event => {
-    console.log(event.request)
     event.respondWith(
         caches.match(event.request)
             .then( response => {
