@@ -1,4 +1,4 @@
-## Project 7A: React Quiz App
+## Project 7A: React Quiz App (PWA)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It was created for submission in Pana Cloud Bootcamp 2020.
 
