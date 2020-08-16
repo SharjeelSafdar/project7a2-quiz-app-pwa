@@ -19,17 +19,17 @@ const App = () => {
       <Title>It's Quiz Time</Title>
       <AsyncResourceContent  
         fallback={<Loading />}
-        errorMessage={<Error setAppState={setAppState}/>}
+        errorMessage={<Error />}
       >
         <Box>
-        {(appState === 0 || appState === 4) && 
-          <SelectQuiz fetchNewQuiz={fetchNewQuiz} setAppState={setAppState} />}
-        {appState === 1 && 
-          <StartQuiz quizReader={quizReader} dataModifier={dataModifier} setAppState={setAppState} />}
-        {appState === 2 && 
-          <QuestionCard setAppState={setAppState} />}
-        {appState === 3 && 
-          <Results setAppState={setAppState} />}
+          {appState === 0 && 
+            <SelectQuiz fetchNewQuiz={fetchNewQuiz} setAppState={setAppState} />}
+          {appState === 1 && 
+            <StartQuiz quizReader={quizReader} dataModifier={dataModifier} setAppState={setAppState} />}
+          {appState === 2 && 
+            <QuestionCard setAppState={setAppState} />}
+          {appState === 3 && 
+            <Results setAppState={setAppState} />}
         </Box>
       </AsyncResourceContent >
     </GlobalProvider>

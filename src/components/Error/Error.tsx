@@ -1,11 +1,7 @@
 import React from 'react';
-import { Box, Button } from '../../styles/styles';
+import { Box } from '../../styles/styles';
 
-interface Props {
-    setAppState: React.Dispatch<React.SetStateAction<number>>;
-}
-
-const Error: React.FC<Props> = ({ setAppState }) => {
+const Error: React.FC<Props> = () => {
     return (
         <Box>
             <p
@@ -17,17 +13,8 @@ const Error: React.FC<Props> = ({ setAppState }) => {
                     fontSize: '17px'
                 }}
             >
-                It seems that you are offline :( Please, check your internet connection and try again.
+                It seems that you are offline :( Please, check your internet connection and refresh the page.
             </p>
-            <Button onClick={() => setAppState( previous => {
-                // Toggle appState value between 0 and 4.
-                if (previous === 0)
-                    return 4;
-                else
-                    return 0;
-            })}>
-                Back to Home Page
-            </Button>
         </Box>
     )
 }
