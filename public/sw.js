@@ -41,8 +41,9 @@ this.addEventListener('fetch', event => {
                             return response;
                         }
   
-                        if (event.request.includes('opentdb.com')) {
-                            // Clone and cache the respone if it is a valid one.
+                        // Clone and cache the respone if it is a valid one.
+                        // and it is not the one related to API call.
+                        if (!event.request.includes('opentdb.com')) {
                             var responseToCache = response.clone();
                             caches.open(CACHE_NAME)
                                 .then( cache => {
