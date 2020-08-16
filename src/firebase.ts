@@ -14,9 +14,6 @@ export const requestFcmPermission = () => {
     const messaging = firebase.messaging();
     messaging.requestPermission()
         .then( () => messaging.getToken() )
-        .then( token => {
-            console.log(`Token: ${token}`) 
-            prompt('Token', token);
-        })
+        .then( token => console.log(`Token: ${token}`) )
         .catch( error => console.log(`Error: ${error}`) )
 }
