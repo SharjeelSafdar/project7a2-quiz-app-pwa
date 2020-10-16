@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Link to Web App
 
-The web app has been deployed to Surge, and can be accessed [here](https://quiz-pwa-project7a2.netlify.app/).
+The web app has been deployed to Netlify, and can be accessed [here](https://quiz-pwa-project7a2.netlify.app/).
 
 ### Features
 The following are some of the features of this project:
